@@ -1,0 +1,14 @@
+replicaCount: 1
+
+webapp:
+  name: ncote-helm-test
+  group: ncote-helm-test
+  path: /viztest
+  tls:
+    fqdn: ncote-helm-test.k8s.ucar.edu
+    secretName: incommon-cert-ncote-helm-test
+  container: 
+    image: ncote/ncar-viz
+    port: 5001
+    memory: 1G
+    cpu: 2
