@@ -10,8 +10,12 @@ Information required to create a Helm chart for your web application:
 5. Container port to expose. Your containerized application will expose a port to the network in order to communicate. More often than not there is a default for the application you are using and you also have the ability to provide a specific port if you wanted. If you have run your container image locally it is usually in the URL you used to access it locally, ie. `http://127.0.0.1:8888` is running on port 8888 and would be the appropriate value to put in the Helm chart. 
 ```
 
-## Using the Notebook to generate a values.yaml file
-The `helm.ipynb` file utilizes ipywidgets to allow users to input fields and create their own custom chart in a more user friendly way. It will create a `values.yaml` file in the web-app directory with the values provided in the Notebook.
+## Update values.yaml file
+In the `web-app/` directory is a file named `values.yaml` which contains all the specific details for your application. You need to update the following values to be unique for your deployment:
 
-## Manually create a values.yaml file
-If you don't want to use the Jupyter Notebook to create a new value file you can just copy the temp file in to the web-app directory and update the values inline on your own. 
+    - `#APP_NAME` : The name, and group name, to give your application.
+    - `#URL_PATH` : This is the URL suffix to route to. For most applications this will just be `/` unless your applications launches on a different default path
+    - `#FQDN` : ***This must end in .k8s.ucar.edu*** The fully Fully Qualified Domain Name to use for your application. This needs to be unique and has to live under the sub domain `*.k8s.ucar.edu`
+    - `secretName: incommon-cert-#HOST` : This is a secret that gets stored in kubernetes that contains the certificate for your application. This needs to be unique for the FQDN that is going to be in use as the SSL certificate and URL are coupled. 
+    - `#IMAGE_NAME` : This is the name and path to your image. By default Helm will look to Docker Hub. If you use something else please provide the full path to your image
+    - `#CONTAINER_PORT` : This is the network path that your container application opens and listens on. We need to map this to k8s in order to communicate in to your container. 
