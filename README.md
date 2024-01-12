@@ -20,5 +20,9 @@ In the `web-app/` directory is a file named `values.yaml` which contains all the
     - `#IMAGE_NAME` : This is the name and path to your image. By default Helm will look to Docker Hub. If you use something else please provide the full path to your image
     - `#CONTAINER_PORT` : This is the network path that your container application opens and listens on. We need to map this to k8s in order to communicate in to your container. 
 
+```{note}
+replicaCount: defines how many instances of your container you want to run. This is a static value that will run at all times and not a number that scales. Autoscaling is possible but requires additions to the Helm chart. 
+```
+
 ## Update Chart.yaml
 The Chart.yaml file is mostly used to describe your application and keep track of what versions you are on and running. 
