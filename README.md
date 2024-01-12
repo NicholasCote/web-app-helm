@@ -19,6 +19,7 @@ In the `web-app/` directory is a file named `values.yaml` which contains all the
     - `secretName: incommon-cert-#HOST` : This is a secret that gets stored in kubernetes that contains the certificate for your application. This needs to be unique for the FQDN that is going to be in use as the SSL certificate and URL are coupled. 
     - `#IMAGE_NAME` : This is the name and path to your image. By default Helm will look to Docker Hub. If you use something else please provide the full path to your image
     - `#CONTAINER_PORT` : This is the network path that your container application opens and listens on. We need to map this to k8s in order to communicate in to your container. 
+    - `memory:` & `cpu:` is the amount of memory and cpus to allocate to your application. By default this is set low and it should be adjusted to fine tune your applications performance. 
 
 ```{note}
 replicaCount: defines how many instances of your container you want to run. This is a static value that will run at all times and not a number that scales. Autoscaling is possible but requires additions to the Helm chart. 
