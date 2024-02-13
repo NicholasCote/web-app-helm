@@ -11,7 +11,7 @@ Information required to create a Helm chart for your web application:
 ```
 
 ## Update values.yaml file
-In the `web-app/` directory is a file named `values.yaml` which contains all the specific details for your application. You need to update the following values to be unique for your deployment:
+In the `web-app-helm/` directory is a file named `values.yaml` which contains all the specific details for your application. You need to update the following values to be unique for your deployment:
 
     - `#APP_NAME` : The name, and group name, to give your application.
     - `#URL_PATH` : This is the URL suffix to route to. For most applications this will just be `/` unless your applications launches on a different default path
